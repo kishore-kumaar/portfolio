@@ -25,17 +25,17 @@ function Contact() {
     e.preventDefault()
     setStatus("Sending...")
 
-    emailjs
-      .send(
-        "service_xg5qcue",     // 🔁 replace
-        "template_vjdke6z",    // 🔁 replace
-        {
-          from_name: formData.from_name,
-          reply_to: formData.reply_to,
-          message: formData.message,
-        },
-        "lLGUsyogAUgjUh9SM"      // 🔁 replace
-      )
+   emailjs.send(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  {
+    from_name: formData.from_name,
+    reply_to: formData.reply_to,
+    message: formData.message,
+  },
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+)
+
       .then(
         () => {
           setStatus("Message sent successfully!")
